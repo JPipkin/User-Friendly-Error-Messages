@@ -14,8 +14,9 @@ public class FriendlyErrorException extends Exception  {
 
 	private static final Map<String,FriendlyMessages__c> messageMap = FriendlyMessages__c.getAll();
 
-	public FriendlyErrorException(List<SObject> lstTr){
+	public FriendlyErrorException(List<SObject> lstTr,Exception ex){
 		this.lstTrigger = lstTr;
+		init_Message(ex);
 	}
 
 	public void init_Message(Exception ex){
