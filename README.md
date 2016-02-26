@@ -6,34 +6,34 @@ Custom setting "FriendlyMessages__c" controls what is displayed to the user in t
 
 On DML calls in Apex, use try/catch blocks to catch the exception instance
 FOR TRIGGER CONTEXT:
-<code>
-try{\n
-	insert newAccount;\n
-}\n
-catch(Exception e){\n
-	FriendlyErrorException fee = new FriendlyErrorException(Trigger.new, e);\n
-    fee.throwIt();\n
-}\n
-</code>
+<i>
+try{
+	insert newAccount;
+}
+catch(Exception e){
+	FriendlyErrorException fee = new FriendlyErrorException(Trigger.new, e);
+    fee.throwIt();
+}
+</i>
 
 OUTSIDE TRIGGER CONTEXT:
-<code>
-try{\n
-	insert newAccount;\n
-}\n
-catch(Exception e){\n
-	FriendlyErrorException fee = new FriendlyErrorException(new SObject[] {newAccount}, e);\n
-    fee.throwIt();\n
+<i>
+try{
+	insert newAccount;
 }
-</code>
+catch(Exception e){
+	FriendlyErrorException fee = new FriendlyErrorException(new SObject[] {newAccount}, e);
+    fee.throwIt();
+}
+</i>
 
 VISUALFORCE PAGE
-<code>
-try{\n
-	insert newAccount;\n
-}\n
-catch(Exception e){\n
-	FriendlyErrorException fee = new FriendlyErrorException(new SObject[] {newAccount}, e);\n
-    ApexPages.addmessage(new ApexPages.message(ApexPages.severity.INFO, fee.my_exception.display));\n
+<i>
+try{
+	insert newAccount;
 }
-</code>
+catch(Exception e){
+	FriendlyErrorException fee = new FriendlyErrorException(new SObject[] {newAccount}, e);
+    ApexPages.addmessage(new ApexPages.message(ApexPages.severity.INFO, fee.my_exception.display));
+}
+</i>
